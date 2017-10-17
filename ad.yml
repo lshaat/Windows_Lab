@@ -1,0 +1,19 @@
+---
+- hosts: windows
+  vars:
+    ansible_connection: winrm
+    ansible_port: 5986
+    ansible_ssh_port: 5986
+    ansible_user: Administrator
+    ansible_ssh_user: Administrator
+    ansible_winrm_server_cert_validation: ignore
+    ansible_winrm_transport: basic
+    ansible_become: false
+  tasks:
+
+- name: Install AD Role
+  hosts: windows
+  roles:
+    - win_ad_install 
+       
+  

@@ -1,0 +1,11 @@
+ad:
+ domain:
+  - name: ad.c5aa.example.opentlc.com
+ admin:
+  - user: admin@ad.c5aa.example.opentlc.com
+  - password: password
+
+ safe:
+  mode:
+    - password: password
+  

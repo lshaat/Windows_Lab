@@ -1,0 +1,58 @@
+[GenericExample:vars]
+
+###########################################################################
+### Ansible Vars
+###########################################################################
+timeout=60
+ansible_become=yes
+ansible_ssh_user=ec2-user
+
+
+[GenericExample:children]
+towers
+frontends
+apps
+appdbs
+windows
+support
+
+
+
+[towers]
+## These are the towers
+tower1.c5aa.internal public_host_name=tower1.c5aa.example.opentlc.com ssh_host=ec2-54-255-253-9.ap-southeast-1.compute.amazonaws.com
+tower2.c5aa.internal public_host_name=tower2.c5aa.example.opentlc.com ssh_host=ec2-13-228-195-131.ap-southeast-1.compute.amazonaws.com
+tower3.c5aa.internal public_host_name=tower3.c5aa.example.opentlc.com ssh_host=ec2-13-228-232-219.ap-southeast-1.compute.amazonaws.com
+
+[frontends]
+## These are the frontends
+frontend1.c5aa.internal ssh_host=ec2-52-77-225-139.ap-southeast-1.compute.amazonaws.com
+
+[apps]
+## These are the apps
+app1.c5aa.internal ssh_host=ec2-54-169-58-158.ap-southeast-1.compute.amazonaws.com
+app2.c5aa.internal ssh_host=ec2-54-169-90-214.ap-southeast-1.compute.amazonaws.com
+
+[appdbs]
+## These are the appdbs
+appdb1.c5aa.internal ssh_host=ec2-54-254-209-173.ap-southeast-1.compute.amazonaws.com
+
+[windows]
+## These are the windows servers
+windows1.c5aa.internal ssh_host=ec2-13-229-33-79.ap-southeast-1.compute.amazonaws.com ansible_password=jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
+
+
+## These are the supporthosts
+[support]
+support1.c5aa.internal ssh_hose=ec2-13-229-44-189.ap-southeast-1.compute.amazonaws.com
+support2.c5aa.internal ssh_hose=ec2-54-255-222-34.ap-southeast-1.compute.amazonaws.com
+
+[windows:vars]
+ansible_connection=winrm
+ansible_port=5986
+ansible_ssh_port=5986
+ansible_user=Administrator
+ansible_ssh_user=Administrator
+ansible_winrm_server_cert_validation=ignore
+ansible_winrm_transport=basic
+ansible_become=false

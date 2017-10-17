@@ -1,0 +1,18 @@
+---
+# tasks file for win_ad_install
+ - name: Install Active Directory Role
+   win_feature: 
+    name: AD-Domain-Services
+    include_management_tools: yes
+    include_sub_features: yes
+    state: present
+ 
+ - name: Ensure Domain is installed
+   win_domain:
+    dns_domain_name: ad.c5aa.example.opentlc.com
+    safe_mode_password: Funnyman21@funny
+   register: active_directory_controllers
+   
+ - name: Reboot post installation
+   win_reboot:
+   when: active_directory_controllers.reboot_required

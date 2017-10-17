@@ -1,0 +1,18 @@
+package_name: openssh
+parameters: /SSHServerFeature
+service_name: sshd
+local_port: 22
+protocol_name: tcp
+ansible_connection: winrm
+ansible_port: 5986
+ansible_ssh_port: 5986
+ansible_user: Administrator
+ansible_ssh_user: Administrator
+ansible_winrm_server_cert_validation: ignore
+ansible_winrm_transport: basic
+ansible_become: false
+user_info:
+   - { name: 'james', firstname: 'James', surname: 'Jockey', password: 'redhat@123' }
+   - { name: 'bill', firstname: 'Bill', surname: 'Gates', password: 'redhat@123' }
+   - { name: 'mickey', firstname: 'Mickey', surname: 'Mouse', password: 'redhat@123' }
+   - { name: 'donald', firstname: 'Donald', surname: 'Duck', password: 'redhat@123' }

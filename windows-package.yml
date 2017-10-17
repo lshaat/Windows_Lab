@@ -1,0 +1,18 @@
+---
+- name: Configure Windows Machine
+  hosts: windows
+  vars_files:
+    - win_vars.yml
+  gather_facts: yes
+  tasks:
+
+- name: Install Roles
+  hosts: windows
+  vars_files:
+    - win_vars.yml
+  roles:
+    - win_package_install
+    - win_firewall
+    - win_service_manage 
+    - win_ad_user
+

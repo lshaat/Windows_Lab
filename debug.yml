@@ -1,0 +1,10 @@
+---
+- name: Configure Windows Machine
+  hosts: localhost
+  vars_files:
+    - win_vars.yml
+  gather_facts: no
+  tasks:
+
+  - name: debug
+    debug: msg {user_info.surname}
